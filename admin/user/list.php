@@ -9,6 +9,7 @@
        		</div>
         	<!-- /.col-lg-12 --> 
    		 	<div class="col-lg-12"> 
+				<div class="table-responsive">	
 				<table id="dash-table" class="table  table-bordered table-hover table-responsive" style="font-size:12px;" cellspacing="0"> 
 				  <thead>
 				  	<tr>
@@ -52,5 +53,6 @@
 				  </tbody>
 					
 				</table>  
+			</div> 
 			</div> 
  

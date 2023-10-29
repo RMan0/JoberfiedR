@@ -142,8 +142,47 @@
                         <textarea class="form-control input-sm" id="SECTOR_VACANCY" name="SECTOR_VACANCY" placeholder="Sector of Vacancy"   autocomplete="none"></textarea> 
                       </div>
                     </div>
-                  </div>   
+                  </div> 
+                  <div class="form-group">
+                    <div class="col-md-8">
+                      <label class="col-md-4 control-label" for=
+                      "JOBSTATUS">Job Status:</label> 
+                      <div class="col-md-8">
+                          <select class="form-control input-sm" id="JOBSTATUS" name="JOBSTATUS">
+                          <option value="None">Select</option>
+                           <option>Available</option>
+                           <option>Not Available</option>           
+                        </select>
+                      </div>
+                    </div>
+                  </div> 
+                  <div class="form-group">
+                    <div class="col-md-8">
+                      <label class="col-md-4 control-label" for=
+                      "SECTOR_VACANCY">Add Photo</label>
+
+                      <?php  
+                      if (isset($_GET['JOBID'])) {
+                        $jobid = $_GET['JOBID'];
+
                   
+                        $view = isset($_GET['view']) ? $_GET['view'] :"";  
+                        $job = New Jobs();
+                        $singlejob = $job->single_job($_SESSION['JOBID']); 
+ }
+                      ?>
+
+                      <div class="col-md-8">
+                      <div class="panel-body"> 
+                      <div  id="image-container">
+                
+                <img title="job photo"  data-target="#myModal"  data-toggle="modal"  src="<?php echo web_root . 'vacancy/' . $singlejob->JOBPHOTO; ?>">  
+              </div>
+             </div> 
+                      </div>
+                    </div>
+                  </div>    
+               
                   <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=

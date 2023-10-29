@@ -161,6 +161,28 @@
                       </div>
                     </div>
                   </div>  
+                  <div class="form-group">
+                    <div class="col-md-8">
+                      <label class="col-md-4 control-label" for=
+                      "JOBSTATUS">Job Status:</label> 
+                      <div class="col-md-8">
+                          <select class="form-control input-sm" id="JOBSTATUS" name="JOBSTATUS">
+                          <option value="None">Select</option>
+                           <option <?php echo ($res->JOBSTATUS=='Available') ? "SELECTED" :"" ?>>Available</option>
+                           <option <?php echo ($res->JOBSTATUS=='Not Available') ? "SELECTED" :"" ?>>Not Available</option>           
+                        </select>
+                      </div>
+                    </div>
+                  </div> 
+                  <div class="form-group">
+                    <div class="col-md-8">
+                      <label class="col-md-4 control-label" for=
+                      "JOBPHOTO">Add Photo</label> 
+                      <div class="col-md-8">
+                        <textarea class="form-control input-sm" id="JOBPHOTO" name="JOBPHOTO" placeholder="Add Photo"   autocomplete="none"></textarea> 
+                      </div>
+                    </div>
+                  </div> 
  
                   <div class="form-group">
                     <div class="col-md-8">

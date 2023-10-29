@@ -90,7 +90,6 @@
                           <ul class="dropdown-menu">
                               <li class="<?php  if(isset($_GET['q'])) { if($_GET['q']=='advancesearch'){ echo 'active'; }else{ echo ''; }}  ?>"><a href="<?php echo web_root; ?>index.php?q=advancesearch">Advance Search</a></li>
                               <li><a href="<?php echo web_root; ?>index.php?q=search-company">Job By Company</a></li>
-                              <li><a href="<?php echo web_root; ?>index.php?q=search-function">Job By Function</a></li>
                               <li><a href="<?php echo web_root; ?>index.php?q=search-jobtitle">Job By Title</a></li>
                          <!--      <li><a href="#">Job for Women</a></li>
                               <li><a href="#">Job for Men</a></li> -->
@@ -164,14 +163,15 @@
                         ?>
 
                   <div class="pull-right login">
-                  <li class="dropdown user user-menu" style="padding-right: 15px;"  >
+                  <li class="dropdown user user-menu" style="padding-right: 35px;"  >
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                          <img src="<?php echo web_root.'applicant/'.$appl->APPLICANTPHOTO; ?>" style=" margin-top: 20px; height: 40px; width: 40px; border-radius: 50%; display: block; margin-left: auto; margin-right: auto;">                         
+                          <img src="<?php echo web_root.'applicant/'.$appl->APPLICANTPHOTO; ?>" style=" margin-top: 20px; height: 40px; width: 40px; border-radius: 50%; margin-left: auto; margin-right: auto;">                         
+                          <span class="hidden-xs" style="margin-left: 10px; position: relative; top: 10px;"><?php echo $appl->FNAME; ?></span>
                         </a>
+                       
+                         
                         
-                        
-                        
-                        <ul class="dropdown-menu" style="float: right;">
+                        <ul class="dropdown-menu" style="float: right; margin-top: 10px; border-style: solid; border-width: 0.5px; border-color: white;">
                        
                         <li class="user-header" style="background-color: #00b800;"> 
                           <img data-target="#menuModal"  data-toggle="modal" src="<?php echo web_root.'applicant/'.$appl->APPLICANTPHOTO; ?>" style="height: 80px; width: 80px; border-radius: 50%; display: block; margin-left: auto; margin-right: auto;" alt="User Image" />  

@@ -67,7 +67,8 @@ switch ($view) {
 	default :
 	    $active_home='active';
 	    $title="Home";	
-		$content ='home.php';		
+		$content ='home.php';	
+		
 }
 require_once("theme/templates.php");
 ?>

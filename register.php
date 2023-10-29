@@ -1,42 +1,57 @@
 <section id="content">
-<!---------------------------------------------UPLOAD PHOTO----------------------------------------------------->
 
-<?php   
-     
-	  
-	  $applicant = new Applicants();
-	  $appl = $applicant->single_applicant($_SESSION['APPLICANTID']);  
-	
-  ?>
-  <style type="text/css">
-/*    #image-container {
-      width: 230px;
-    }*/
-    .panel-body img{
-      width: 100%;
-      height: 100%;
-    }
-    .panel-body img:hover{
-      cursor: pointer;
-    }
-  </style>
-
-<div class="container" style="margin-top: 10px;min-height: 600px;">
-
-    <div class="row">
-
-        <div class="col-sm-3"><!--left col-->
-           <div class="panel panel-default">            
-            <div class="panel-body"> 
-              <div  id="image-container">
-                <img title="profile image"  data-target="#myModal"  data-toggle="modal"  src="<?php echo web_root.'applicant/'.$appl->APPLICANTPHOTO; ?>">  
-              </div>
-             </div>
-<!---------------------------------------------UPLOAD PHOTO----------------------------------------------------->
     <div class="container content">    
+
+<!---------------------------------------------UPLOAD PHOTO----------------------------------------------------->
+<section>
+<?php  
+    unset($_SESSION['appliedjobs']);
+    unset($_SESSION['accounts']); 
+     ?>
+ 
+         <!-- Modal -->
+                    
+                                <div class="modal-header">
+                                    <button class="close" data-dismiss="modal" type=
+                                    "button">×</button>
+
+                                    <h4 class="modal-title" id="myModalLabel">Choose Image.</h4>
+                                </div>
+
+                                <form action="controller.php?action=photos" enctype="multipart/form-data" method=
+                                "post">
+                                    <div class="modal-body">
+                                    <p>Maximum allowed size (25MB)</p> 
+                                        <div class="form-group">
+                                          
+                                            <div class="rows">
+                                                <div class="col-md-12">
+                                                    <div class="rows">
+                                                        <div class="col-md-8">
+                                                          <input name="MAX_FILE_SIZE" type=
+                                                            "hidden" value="1000000"> <input id=
+                                                            "photo" name="photo" type=
+                                                            "file">
+                                                        </div>
+
+                                                        <div class="col-md-4"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                   
+                                </form>
+                    
+					</section>
+
+<!---------------------------------------------UPLOAD PHOTO----------------------------------------------------->
+
      <p> <?php check_message();?></p>      
 		<form class="row form-horizontal span6  wow fadeInDown" action="process.php?action=register" method="POST">
 		<h2 class=" ">Personal Info</h2>
+		
 		<div class="row"> 
 			<div class="form-group">
 				<div class="col-md-8">

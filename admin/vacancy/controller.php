@@ -21,7 +21,10 @@ switch ($action) {
 	doDelete();
 	break;
 
- 
+	case 'photos' :
+	doupdateimage();
+	break;
+	
 	}
    
 	function doInsert(){
@@ -48,7 +51,9 @@ switch ($action) {
 			$job->QUALIFICATION_WORKEXPERIENCE		= $_POST['QUALIFICATION_WORKEXPERIENCE'];
 			$job->JOBDESCRIPTION					= $_POST['JOBDESCRIPTION'];
 			$job->PREFEREDSEX						= $_POST['PREFEREDSEX'];
-			$job->SECTOR_VACANCY					= $_POST['SECTOR_VACANCY']; 
+			$job->SECTOR_VACANCY					= $_POST['SECTOR_VACANCY'];
+			$job->JOBSTATUS					        = $_POST['JOBSTATUS'];
+			$job->JOBPHOTO					        = $_POST['JOBPHOTO']; 
 			$job->DATEPOSTED						= date('Y-m-d H:i');
 			$job->create();
 
@@ -82,7 +87,9 @@ switch ($action) {
 				$job->QUALIFICATION_WORKEXPERIENCE		= $_POST['QUALIFICATION_WORKEXPERIENCE'];
 				$job->JOBDESCRIPTION					= $_POST['JOBDESCRIPTION'];
 				$job->PREFEREDSEX						= $_POST['PREFEREDSEX'];
-				$job->SECTOR_VACANCY					= $_POST['SECTOR_VACANCY']; 
+				$job->SECTOR_VACANCY					= $_POST['SECTOR_VACANCY'];
+				$job->JOBSTATUS					        = $_POST['JOBSTATUS'];
+				$job->JOBPHOTO					        = $_POST['JOBPHOTO']; 
 				$job->update($_POST['JOBID']);
 
 				message("Job Vacancy has been updated!", "success");

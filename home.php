@@ -1,4 +1,5 @@
   
+
   <section id="banner">
    
   <!-- Slider -->
@@ -7,29 +8,24 @@
               <li>
                 <img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/1.png" alt="" />
                 <div class="flex-caption">
-                    <h3>peso</h3> 
-                    <h3>mabini</h3> 
-          <p>Here to help you have a satisfying career.</p> 
+                
            
                 </div>
               </li>
-              <li>
-                <img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/2.jpg" alt="" />
-                <div class="flex-caption">
-                    <h3>Specialize</h3> 
-          <p>Success depends on work</p> 
-           
-                </div>
-              </li>
+             
             </ul>
         </div>
   <!-- end slider -->
  
   </section> 
-  <section id="call-to-action-2">
-    <div class="container">
+  <section id="call-to-action-2" style="background-color: #fff; 
+                                       border-width: 1px; 
+                                       border-color: grey; 
+                                       box-shadow: 0 1px 3px 0  #ccc;
+                                       border-radius: 10px;">
+    <div class="container" >
       <div class="row">
-        <div class="col-md-10 col-sm-9">
+        <div class="col-md-10 col-sm-9" >
           <h3>Partner with Business Leaders</h3>
           <p>Development of successful, long term, strategic relationships between customers and suppliers, based on achieving best practice and sustainable competitive advantage. In the business partner model, HR professionals work closely with business leaders and line managers to achieve shared organisational objectives.</p>
         </div>
@@ -40,19 +36,18 @@
     </div>
   </section>
   
-  <section id="content">
-  
-  
-  <div class="container">
-        <div class="row">
-      <div class="col-md-12">
+  <section id="content" style="background-color: #F1F0F0;">
+    <div class="container" >
+      <div class="row">     
+        <div class="col-md-12 " style="background-color: #fff; 
+                                       border-width: 1px; 
+                                       border-color: grey; 
+                                       box-shadow: 0 2px 3px 0  #ccc;
+                                       border-radius: 10px;
+                                       margin-top: 30px;
+                                       padding-bottom: 30px;">
         <div class="aligncenter"><h2 class="aligncenter">Job</h2>
-         </div>
-        <br/>
-      </div>
-    </div>
-
-
+      <div class="info-blocks-in" style="margin-top: 25px;">
 
   
 
@@ -105,6 +100,10 @@
             </div>
            
     <?php } ?> 
+  </div>
+  </div>
+  </div>
+  </div>
   </div>
   </section>
 
@@ -185,22 +184,16 @@ foreach ($comp as $company) {
 
 
 <!-------------------------TRAINING SECTION---------------------->
-  <section class="section-padding gray-bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="aligncenter">
-            <h2 class="aligncenter">Training</h2>  
-          </div>
-        </div>
-      </div>
-      
-      <div class="row">
-        
-        <div class="col-md-12 " style="background-color: #e4ffe4; box-shadow: 4px 4px 5px 0.5px #ccc;">
-        <div class="info-blocks-in" style="margin-top: 25px;">
-       
-
+<section id="content" style="background-color: #F1F0F0;">
+    <div class="container" >
+      <div class="row">     
+        <div class="col-md-12 " style="background-color: #fff; 
+                                       border-width: 1px; 
+                                       border-color: grey; 
+                                       box-shadow: 0 2px 3px 0  #ccc;
+                                       border-radius: 10px;">
+        <div class="aligncenter"><h2 class="aligncenter">Training</h2></div>
+      <div class="info-blocks-in" style="margin-top: 25px;"> 
           <?php 
             $sql = "SELECT * FROM `tblcategory`";
             $mydb->setQuery($sql);
@@ -209,28 +202,24 @@ foreach ($comp as $company) {
             foreach ($cur as $result) {
               echo '<div class="col-md-3" style="font-size:15px;padding:5px">* <a href="'.web_root.'index.php?q=category&search='.$result->CATEGORY.'">'.$result->CATEGORY.'</a></div>';
             }
-
           ?>
         </div>
         </div>
       </div>
- 
-    </div>
+      </div>    
   </section>    
 <!-------------------------TRAINING SECTION END---------------------->
-
-  <section class="section-padding gray-bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="aligncenter">
-            <h2 class="aligncenter">Popular Jobs</h2>  
-          </div>
-        </div>
-      </div>
-      <div class="row">
-      <div class="col-md-12 " style="background-color: #e4ffe4; box-shadow: 4px 4px 5px 0.5px #ccc;">
-        <div class="info-blocks-in" style="margin-top: 25px;">
+<section id="content" style="background-color: #F1F0F0;">
+    <div class="container" >
+      <div class="row">     
+        <div class="col-md-12 " style="background-color: #fff; 
+                                       border-width: 1px; 
+                                       border-color: grey; 
+                                       box-shadow: 0 2px 3px 0  #ccc;
+                                       border-radius: 10px;">
+                                       
+        <div class="aligncenter"><h2 class="aligncenter">Training</h2></div>
+      <div class="info-blocks-in" style="margin-top: 25px;">
           <?php 
             $sql = "SELECT * FROM `tblcategory`";
             $mydb->setQuery($sql);
@@ -239,13 +228,14 @@ foreach ($comp as $company) {
             foreach ($cur as $result) {
               echo '<div class="col-md-3" style="font-size:15px;padding:5px">* <a href="'.web_root.'index.php?q=category&search='.$result->CATEGORY.'">'.$result->CATEGORY.'</a></div>';
             }
-
           ?>
+      </div>
         </div>
       </div>
- 
-    </div>
+      </div>
+   
   </section>    
+
   <section id="content-3-10" class="content-block data-section nopad content-3-10">
   <div class="image-container col-sm-6 col-xs-12 pull-left">
     <div class="background-image-holder">
@@ -253,7 +243,7 @@ foreach ($comp as $company) {
     </div>
   </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid" >
     <div class="row">
       <div class="col-sm-6 col-sm-offset-6 col-xs-12 content">
         <div class="editContent">
@@ -275,13 +265,4 @@ foreach ($comp as $company) {
            
                   </div>
               </div>
-              
-            </div>
-            
-                        
-             
-            <br>
-           
-            </div>
-            
-          </div>
+  

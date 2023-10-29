@@ -268,7 +268,7 @@
     <div class="pull-right hidden-xs">
       <b>JOBERFIED</b> 2.3.2
     </div>
-    <strong>Sample &copy; 2023 <a href="#">JOBERFIED</a>.</strong> All rights
+    <strong> &copy; 2023 <a href="#">JOBERFIED</a>.</strong> All rights
     reserved.
   </footer>
 

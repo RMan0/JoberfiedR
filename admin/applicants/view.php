@@ -120,10 +120,7 @@ global $mydb;
 	<div class="col-sm-12 slider">
 		 <h3>Download Resume <a href="<?php echo web_root.'applicant/'.$attachmentfile->FILE_LOCATION; ?>">Here</a></h3>
 	</div> 
-
-	<div class="col-sm-12">
-    <p>Feedback</p>
-    <textarea class="form-control input-sm" name="REMARKS" rows="10" cols="50" style="height: 150px; resize: vertical;"><?php echo isset($jobreg->REMARKS) ? $jobreg->REMARKS : ""; ?></textarea>
+    <textarea class="form-control input-sm" name="REMARKS" style="height: 150px; resize: vertical;"><?php echo isset($jobreg->REMARKS) ? $jobreg->REMARKS : ""; ?></textarea>
 </div>
 <div class="col-sm-12 submitbutton">
     <button type="submit" name="submit" class="btn btn-primary">Send</button>

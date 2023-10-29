@@ -15,7 +15,7 @@
         
           <p style="color: black;"> 
           &nbsp;&nbsp; The JOBERFIED job portal represents a significant step forward in the ongoing digital transformation of the job market. The portal's comprehensive features and services will provide job seekers and employers with a range of tools to connect and collaborate, making it easier to find suitable employment opportunities and streamlining the recruitment process. As such, the portal has the potential to make a real difference in the lives of the residents of Mabini, creating new opportunities for growth and development and contributing to the overall prosperity of the area.<br/><br/>
-          
+</p>
         </div> 
       </div>
     </div><!-- /.row-->

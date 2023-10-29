@@ -46,8 +46,9 @@
                 <div class="input-group col-md-12">
                     <input type="text" name="SEARCH" class="form-control input-lg" placeholder="Search By Job Title" />
                     <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                            <i class="glyphicon glyphicon-search"></i>
+                        <button input type="submit" name="submit" class="btn btn-info btn-lg">
+                            <i class="glyphicon fa fa-search"></i>
+                         
                         </button>
                     </span>
                 </div>
