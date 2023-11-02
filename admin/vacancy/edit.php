@@ -17,7 +17,23 @@
                     </div>
                     <!-- /.col-lg-12 -->
                  </div> 
-
+                 <div class="col-sm-12">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-header">
+                            <div style="border-bottom: 1px solid #ddd;padding: 10px;font-size: 25px;font-weight: bold;color: #000;margin-bottom: 5px;">Upload Photo
+                            </div>
+                        </div>
+                        <div class="panel-body"> 
+                            <label class="col-md-2" for="picture" style="padding: 0;margin: 0;">Upload Photo:</label> 
+                            <div class="col-md-10" style="padding: 0;margin: 0;">
+                                <input id="photo" name="photo" type="file">
+                                <input name="MAX_FILE_SIZE" type="hidden" value="2500000"> 
+                            </div> 
+                        </div>
+                    </div> 
+                </div> 
+            </div>
                  <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=
@@ -171,15 +187,6 @@
                            <option <?php echo ($res->JOBSTATUS=='Available') ? "SELECTED" :"" ?>>Available</option>
                            <option <?php echo ($res->JOBSTATUS=='Not Available') ? "SELECTED" :"" ?>>Not Available</option>           
                         </select>
-                      </div>
-                    </div>
-                  </div> 
-                  <div class="form-group">
-                    <div class="col-md-8">
-                      <label class="col-md-4 control-label" for=
-                      "JOBPHOTO">Add Photo</label> 
-                      <div class="col-md-8">
-                        <textarea class="form-control input-sm" id="JOBPHOTO" name="JOBPHOTO" placeholder="Add Photo"   autocomplete="none"></textarea> 
                       </div>
                     </div>
                   </div> 

@@ -1,15 +1,19 @@
-
 <?php
-     if (!isset($_SESSION['ADMIN_USERID'])){
+    if (!isset($_SESSION['ADMIN_USERID'])){
       redirect(web_root."admin/index.php");
      }
 
-?>
- <form class="form-horizontal span6" action="controller.php?action=add" method="POST">
 
-                <div class="row">
+  $jobid = $_GET['id'];
+  $job = New Jobs();
+  $res = $job->single_job($jobid);
+
+?> 
+<form class="form-horizontal span6" action="controller.php?action=edit" method="POST">
+
+  <div class="row">
                    <div class="col-lg-12">
-                      <h1 class="page-header">Add New Job Vacancy</h1>
+                      <h1 class="page-header">Update Job</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                  </div> 
@@ -20,13 +24,21 @@
                       "COMPANYNAME">Company Name:</label>
 
                       <div class="col-md-8">
+                        <input type="hidden" name="JOBID" value="<?php echo $res->JOBID;?>">
                         <select class="form-control input-sm" id="COMPANYID" name="COMPANYID">
                           <option value="None">Select</option>
                           <?php 
-                            $sql ="Select * From tblcompany";
+                            $sql ="Select * From tblcompany WHERE COMPANYID=".$res->COMPANYID;
                             $mydb->setQuery($sql);
-                            $res  = $mydb->loadResultList();
-                            foreach ($res as $row) {
+                            $result  = $mydb->loadResultList();
+                            foreach ($result as $row) {
+                              # code...
+                              echo '<option SELECTED value='.$row->COMPANYID.'>'.$row->COMPANYNAME.'</option>';
+                            }
+                            $sql ="Select * From tblcompany WHERE COMPANYID!=".$res->COMPANYID;
+                            $mydb->setQuery($sql);
+                            $result  = $mydb->loadResultList();
+                            foreach ($result as $row) {
                               # code...
                               echo '<option value='.$row->COMPANYID.'>'.$row->COMPANYNAME.'</option>';
                             }
@@ -36,35 +48,41 @@
                       </div>
                     </div>
                   </div>  
-
-                     <div class="form-group">
+                  <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=
-                      "CATEGORY">Category :</label>
+                      "CATEGORY">Category:</label>
 
-                      <div class="col-md-8">
+                      <div class="col-md-8"> 
                         <select class="form-control input-sm" id="CATEGORY" name="CATEGORY">
                           <option value="None">Select</option>
                           <?php 
-                            $sql ="Select * From tblcategory";
+                            $sql ="SELECT * FROM `tblcategory` WHERE CATEGORY='".$res->CATEGORY."'";
                             $mydb->setQuery($sql);
-                            $res  = $mydb->loadResultList();
-                            foreach ($res as $row) {
+                            $cur  = $mydb->loadResultList();
+                            foreach ($cur as $result) {
                               # code...
-                              echo '<option value='.$row->CATEGORYID.'>'.$row->CATEGORY.'</option>';
+                              echo '<option SELECTED value='.$result->CATEGORYID.'>'.$result->CATEGORY.'</option>';
+                            }
+                            $sql ="SELECT * FROM `tblcategory` WHERE CATEGORY!='".$res->CATEGORY."'";
+                            $mydb->setQuery($sql);
+                            $cur  = $mydb->loadResultList();
+                            foreach ($cur as $result) {
+                              # code...
+                              echo '<option value='.$result->CATEGORYID.'>'.$result->CATEGORY.'</option>';
                             }
 
                           ?>
                         </select>
                       </div>
                     </div>
-                  </div>  
+                  </div>
                   <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=
                       "OCCUPATIONTITLE">Occupation Title:</label> 
                       <div class="col-md-8">
-                         <input class="form-control input-sm" id="OCCUPATIONTITLE" name="OCCUPATIONTITLE" placeholder="Occupation Title"   autocomplete="none"/> 
+                         <input class="form-control input-sm" id="OCCUPATIONTITLE" name="OCCUPATIONTITLE" placeholder="Occupation Title"   autocomplete="none" value="<?php echo $res->OCCUPATIONTITLE; ?>"/> 
                       </div>
                     </div>
                   </div>  
@@ -74,7 +92,7 @@
                       <label class="col-md-4 control-label" for=
                       "REQ_NO_EMPLOYEES">Required no. of Employees:</label> 
                       <div class="col-md-8">
-                         <input class="form-control input-sm" id="REQ_NO_EMPLOYEES" name="REQ_NO_EMPLOYEES" placeholder="Required no. of Employees"   autocomplete="none"/> 
+                         <input class="form-control input-sm" id="REQ_NO_EMPLOYEES" name="REQ_NO_EMPLOYEES" placeholder="Required no. of Employees"   autocomplete="none" value="<?php echo $res->REQ_NO_EMPLOYEES ?>"/> 
                       </div>
                     </div>
                   </div>  
@@ -84,7 +102,7 @@
                       <label class="col-md-4 control-label" for=
                       "SALARIES">Salary:</label> 
                       <div class="col-md-8">
-                         <input class="form-control input-sm" id="SALARIES" name="SALARIES" placeholder="Salary"   autocomplete="none"/> 
+                         <input class="form-control input-sm" id="SALARIES" name="SALARIES" placeholder="Salary"   autocomplete="none" value="<?php echo $res->SALARIES ?>"/> 
                       </div>
                     </div>
                   </div>  
@@ -94,7 +112,7 @@
                       <label class="col-md-4 control-label" for=
                       "DURATION_EMPLOYEMENT">Duration of Employment:</label> 
                       <div class="col-md-8">
-                         <input class="form-control input-sm" id="DURATION_EMPLOYEMENT" name="DURATION_EMPLOYEMENT" placeholder="Duration of Employment"   autocomplete="none"/> 
+                         <input class="form-control input-sm" id="DURATION_EMPLOYEMENT" name="DURATION_EMPLOYEMENT" placeholder="Duration of Employment"   autocomplete="none" value="<?php echo $res->DURATION_EMPLOYEMENT ?>"/> 
                       </div>
                     </div>
                   </div>
@@ -104,7 +122,7 @@
                       <label class="col-md-4 control-label" for=
                       "QUALIFICATION_WORKEXPERIENCE">Qualification/Work Experience:</label> 
                       <div class="col-md-8">
-                        <textarea class="form-control input-sm" id="QUALIFICATION_WORKEXPERIENCE" name="QUALIFICATION_WORKEXPERIENCE" placeholder="Qualification/Work Experience"   autocomplete="none"></textarea> 
+                        <textarea class="form-control input-sm" id="QUALIFICATION_WORKEXPERIENCE" name="QUALIFICATION_WORKEXPERIENCE" placeholder="Qualification/Work Experience"   autocomplete="none" ><?php echo $res->QUALIFICATION_WORKEXPERIENCE ?></textarea> 
                       </div>
                     </div>
                   </div> 
@@ -114,7 +132,7 @@
                       <label class="col-md-4 control-label" for=
                       "JOBDESCRIPTION">Job Description:</label> 
                       <div class="col-md-8">
-                        <textarea class="form-control input-sm" id="JOBDESCRIPTION" name="JOBDESCRIPTION" placeholder="Job Description"   autocomplete="none"></textarea> 
+                        <textarea class="form-control input-sm" id="JOBDESCRIPTION" name="JOBDESCRIPTION" placeholder="Job Description"   autocomplete="none"><?php echo $res->JOBDESCRIPTION ?></textarea> 
                       </div>
                     </div>
                   </div>  
@@ -126,9 +144,9 @@
                       <div class="col-md-8">
                           <select class="form-control input-sm" id="PREFEREDSEX" name="PREFEREDSEX">
                           <option value="None">Select</option>
-                           <option>Male</option>
-                           <option>Female</option>
-                           <option>Male/Female</option>
+                           <option <?php echo ($res->PREFEREDSEX=='Male') ? "SELECTED" :"" ?>>Male</option>
+                           <option <?php echo ($res->PREFEREDSEX=='Female') ? "SELECTED" :"" ?>>Female</option>
+                           <option <?php echo ($res->PREFEREDSEX=='Male/Female') ? "SELECTED" :"" ?>>Male/Female</option>
                         </select>
                       </div>
                     </div>
@@ -139,10 +157,10 @@
                       <label class="col-md-4 control-label" for=
                       "SECTOR_VACANCY">Sector of Vacancy:</label> 
                       <div class="col-md-8">
-                        <textarea class="form-control input-sm" id="SECTOR_VACANCY" name="SECTOR_VACANCY" placeholder="Sector of Vacancy"   autocomplete="none"></textarea> 
+                        <textarea class="form-control input-sm" id="SECTOR_VACANCY" name="SECTOR_VACANCY" placeholder="Sector of Vacancy"   autocomplete="none"><?php echo $res->SECTOR_VACANCY ?></textarea> 
                       </div>
                     </div>
-                  </div> 
+                  </div>  
                   <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=
@@ -150,14 +168,22 @@
                       <div class="col-md-8">
                           <select class="form-control input-sm" id="JOBSTATUS" name="JOBSTATUS">
                           <option value="None">Select</option>
-                           <option>Available</option>
-                           <option>Not Available</option>           
+                           <option <?php echo ($res->JOBSTATUS=='Available') ? "SELECTED" :"" ?>>Available</option>
+                           <option <?php echo ($res->JOBSTATUS=='Not Available') ? "SELECTED" :"" ?>>Not Available</option>           
                         </select>
                       </div>
                     </div>
                   </div> 
-                  
-               
+                  <div class="form-group">
+                    <div class="col-md-8">
+                      <label class="col-md-4 control-label" for=
+                      "JOBPHOTO">Add Photo</label> 
+                      <div class="col-md-8">
+                        <textarea class="form-control input-sm" id="JOBPHOTO" name="JOBPHOTO" placeholder="Add Photo"   autocomplete="none"></textarea> 
+                      </div>
+                    </div>
+                  </div> 
+ 
                   <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=
@@ -170,8 +196,8 @@
                      </div>
                     </div>
                   </div> 
- 
-          
-        </form>
-      
- 
+
+
+
+</form>
+       

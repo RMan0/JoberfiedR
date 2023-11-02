@@ -9,11 +9,27 @@
 
                 <div class="row">
                    <div class="col-lg-12">
-                      <h1 class="page-header">Add New Job Vacancy</h1>
+                      <h1 class="page-header">Post New Job</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                  </div> 
-
+                 <div class="col-sm-12">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-header">
+                            <div style="border-bottom: 1px solid #ddd;padding: 10px;font-size: 25px;font-weight: bold;color: #000;margin-bottom: 5px;">Upload Photo
+                            </div>
+                        </div>
+                        <div class="panel-body"> 
+                            <label class="col-md-2" for="picture" style="padding: 0;margin: 0;">Upload Photo:</label> 
+                            <div class="col-md-10" style="padding: 0;margin: 0;">
+                                <input id="JOBPHOTO" name="JOBPHOTO" type="file">
+                                <input name="MAX_FILE_SIZE" type="hidden" value="2500000"> 
+                            </div> 
+                        </div>
+                    </div> 
+                </div> 
+            </div>
                  <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=

@@ -2,21 +2,46 @@
 
   <section id="banner">
    
-  <!-- Slider -->
-        <div id="main-slider" class="flexslider">
-            <ul class="slides">
-              <li>
-                <img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/1.png" alt="" />
-                <div class="flex-caption">
-                
-           
-                </div>
-              </li>
-             
-            </ul>
-        </div>
-  <!-- end slider -->
+ <!-- Slider -->
+<div id="main-slider" class="flexslider">
+    <ul class="slides">
+        <li>
+            <img src="<?php echo web_root; ?>plugins/home-plugins/img/slides/1.png" alt="" />
+            <div class="flex-caption">
+                <!-- Add content for the first slide here -->
+            </div>
+        </li>
+      
+    </ul>
+</div>
+<!-- End Slider -->
+
  
+    <div class="slider">
+        <!-- Images will be added here dynamically -->
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="slick/slick.min.js"></script>
+    <script>
+        // Fetch image data from the server
+        $.getJSON('api/get_images.php', function(data) {
+            const slider = $('.slider');
+            data.forEach(image => {
+                slider.append(
+                    `<div><img src="${image.image_url}" alt="${image.title}"></div>`
+                );
+            });
+
+            // Initialize the slider
+            $('.slider').slick({
+                autoplay: true,
+                arrows: false
+            });
+        });
+    </script>
+
+
   </section> 
   <section id="call-to-action-2" style="background-color: #fff; 
                                        border-width: 1px; 
@@ -35,23 +60,14 @@
       </div>
     </div>
   </section>
-  
+  <!-------------------------------------------------------START CARD----------------------------------------------------------->
+
   <section id="content" style="background-color: #F1F0F0;">
     <div class="container" >
       <div class="row">     
-        <div class="col-md-12 " style="background-color: #fff; 
-                                       border-width: 1px; 
-                                       border-color: grey; 
-                                       box-shadow: 0 2px 3px 0  #ccc;
-                                       border-radius: 10px;
-                                       margin-top: 30px;
-                                       padding-bottom: 30px;">
+        <div class="col-md-12 ">
         <div class="aligncenter"><h2 class="aligncenter">Job</h2>
       <div class="info-blocks-in" style="margin-top: 25px;">
-
-  
-
-<!-------------------------------------------------------START CARD----------------------------------------------------------->
 
     
 <?php 
@@ -67,7 +83,17 @@
     
             <div class="col-sm-4 info-blocks">
                 <i class="icon-info-blocks fa fa-building-o"></i>
-                <div class="info-blocks-in">
+                <div class="info-blocks-in" style="background-color: #fff; 
+                                       border-width: 1px; 
+                                       border-color: grey; 
+                                       box-shadow: 0 2px 3px 0  #ccc;
+                                       border-radius: 10px;
+                                       margin-top: 30px;
+                                       padding-bottom: 30px;">
+                    <div  id="image-container">
+                      <img title="job photo"  data-target="#myModal"  data-toggle="modal"  src="<?php echo web_root.'admin/vacancy/'.$job->JOBPHOTO; ?>">  
+                    </div>
+                    <p><?php echo $job->JOBPHOTO;?></p>
                     <h3><?php echo $job->CATEGORY;?></h3>
                     <p><?php echo $job->OCCUPATIONTITLE;?></p>
                     <p>Salary :<?php echo $job->SALARIES;?></p>

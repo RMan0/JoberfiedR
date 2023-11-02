@@ -32,9 +32,18 @@
            <div class="panel panel-default">            
             <div class="panel-body"> 
               <div  id="image-container">
-                <img title="profile image"  data-target="#myModal"  data-toggle="modal"  src="<?php echo web_root.'applicant/'.$applicant->APPLICANTPHOTO; ?>">  
+              <img title="profile image" data-target="#myModal" data-toggle="modal" 
+                 src="<?php 
+                    if (!empty($applicant->APPLICANTPHOTO)) {
+                        echo web_root . 'applicant/' . $applicant->APPLICANTPHOTO;
+                    } else {
+                        echo 'photos/defphoto.jpg'; // Replace with the path to your default image
+                    }
+                ?>"
+            > 
               </div>
              </div>
+             
           <ul class="list-group">
        
          

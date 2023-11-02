@@ -162,33 +162,42 @@
                 $msg = isset($showMsg->COUNT) ? $showMsg->COUNT : 0;
                         ?>
 
-                  <div class="pull-right login">
-                  <li class="dropdown user user-menu" style="padding-right: 35px;"  >
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                          <img src="<?php echo web_root.'applicant/'.$appl->APPLICANTPHOTO; ?>" style=" margin-top: 20px; height: 40px; width: 40px; border-radius: 50%; margin-left: auto; margin-right: auto;">                         
-                          <span class="hidden-xs" style="margin-left: 10px; position: relative; top: 10px;"><?php echo $appl->FNAME; ?></span>
-                        </a>
-                       
-                         
-                        
-                        <ul class="dropdown-menu" style="float: right; margin-top: 10px; border-style: solid; border-width: 0.5px; border-color: white;">
-                       
-                        <li class="user-header" style="background-color: #00b800;"> 
-                          <img data-target="#menuModal"  data-toggle="modal" src="<?php echo web_root.'applicant/'.$appl->APPLICANTPHOTO; ?>" style="height: 80px; width: 80px; border-radius: 50%; display: block; margin-left: auto; margin-right: auto;" alt="User Image" />  
-                        </li>
-                        
-                        <li class="user-footer">
+<div class="pull-right login">
+    <li class="dropdown user user-menu" style="padding-right: 35px;">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <?php
+            if (!empty($appl->APPLICANTPHOTO)) {
+                echo '<img src="' . web_root . 'applicant/' . $appl->APPLICANTPHOTO . '" style="margin-top: 20px; height: 40px; width: 40px; border-radius: 50%; margin-left: auto; margin-right: auto;">';
+            } else {
+                echo '<img src="' . web_root . 'theme/img/defphoto.jpg" style="margin-top: 20px; height: 40px; width: 40px; border-radius: 50%; margin-left: auto; margin-right: auto;">';
+            }
+            ?>
+            <span class="hidden-xs" style="margin-left: 10px; position: relative; top: 10px;"><?php echo $appl->FNAME; ?></span>
+        </a>
+
+        <ul class="dropdown-menu" style="float: right; margin-top: 10px; border-style: solid; border-width: 0.5px; border-color: white;">
+            <li class="user-header" style="background-color: #00b800;">
+                <?php
+                if (!empty($appl->APPLICANTPHOTO)) {
+                    echo '<img data-target="#menuModal" data-toggle="modal" src="' . web_root . 'applicant/' . $appl->APPLICANTPHOTO . '" style="height: 80px; width: 80px; border-radius: 50%; display: block; margin-left: auto; margin-right: auto;" alt="User Image" />';
+                } else {
+                    echo '<img data-target="#menuModal" data-toggle="modal" src="' . web_root . 'theme/img/defphoto.jpg" style="height: 80px; width: 80px; border-radius: 50%; display: block; margin-left: auto; margin-right: auto;" alt="User Image" />';
+                }
+                ?>
+            </li>
+
+            <li class="user-footer">
                 <div class="pull-left">
-                  <a href="<?php echo web_root.'applicant/?view=view&id='.$_SESSION['APPLICANTID'] ;?>" class="btn btn-default btn-flat">Profile</a>
+                    <a href="<?php echo web_root . 'applicant/?view=view&id=' . $_SESSION['APPLICANTID']; ?>" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?php echo web_root ;?>logout.php/" class="btn btn-default btn-flat">Sign out</a>
+                    <a href="<?php echo web_root; ?>logout.php/" class="btn btn-default btn-flat">Sign out</a>
                 </div>
-              </li>
-           
-                       </ul>
-                       
-                  </div>
+            </li>
+        </ul>
+    </li>
+</div>
+
                   <li><a href="<?php echo web_root; ?>applicant/index.php?view=notification"><i class="fa fa-bell" ></i> <span class="label label-success"><?php echo $notif; ?></span></a></li>
                       <li><a href="<?php echo web_root; ?>applicant/index.php?view=message"><i class="fa fa-envelope"></i> <span class="label label-success"><?php echo $msg; ?></span></a></li>
                       

@@ -121,7 +121,7 @@
                                                         <div class="col-md-8"> 
                                                             <input class="mealid" type="hidden" name="mealid" id="mealid" value="">
                                                               <input name="MAX_FILE_SIZE" type="hidden" 
-                                                              value="1000000"> 
+                                                              value="2500000"> 
                                                               <input id="photo" name="photo" type="file">
                                                         </div>
 
@@ -190,6 +190,21 @@
             <i class="fa fa-list"></i> <span>Category</span>  
           </a>
         </li> 
+        <li class="<?php echo (currentpage() == 'jobposting') ? "active" : false;?>" > 
+          <a href="<?php echo web_root ;?>admin/jobposting/">
+            <i class="fa fa-list"></i> <span>Job Posting</span>  
+          </a>
+        </li> 
+        <li class="<?php echo (currentpage() == 'trainingposting') ? "active" : false;?>" > 
+          <a href="<?php echo web_root ;?>admin/trainingposting/">
+            <i class="fa fa-list"></i> <span>Training Posting</span>  
+          </a>
+        </li> 
+        <li class="<?php echo (currentpage() == 'slides') ? "active" : false;?>" > 
+          <a href="<?php echo web_root ;?>admin/slides">
+            <i class="fa fa-list"></i> <span>Slides</span>  
+          </a>
+        </li> 
        <!--  <li class="treeview">
           <a href="#">
             <i class="fa fa-laptop"></i>
@@ -208,9 +223,14 @@
          
          <li class="<?php echo (currentpage() == 'user') ? "active" : false;?>">
           <a href="<?php echo web_root; ?>admin/user/">
-            <i class="fa fa-user"></i> <span>Manage Users</span> </a>
+            <i class="fa fa-user"></i> <span>Manage Users</span> 
+          </a>
         </li>
-        
+        <li class="<?php echo (currentpage() == 'message') ? "active" : false;?>" > 
+          <a href="<?php echo web_root ;?>admin/message/">
+            <i class="fa fa-envelope"></i> <span>Message</span>  
+          </a>
+        </li> 
       </ul>
     </section>
     <!-- /.sidebar -->

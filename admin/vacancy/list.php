@@ -3,6 +3,7 @@
       redirect(web_root."admin/index.php");
      } 
 ?>
+
 	<div class="row">
        	 <div class="col-lg-12">
             <h1 class="page-header">List of Vacancies  <a href="index.php?view=add" class="btn btn-primary btn-xs  ">  <i class="fa fa-plus-circle fw-fa"></i> Add Job Vacancy</a>  </h1>
@@ -27,7 +28,6 @@
 				  		<th>Prefered Sex</th> 
 				  		<th>Sector of Vacancy</th> 
 				  		<th>Job Status</th> 
-						<th>Photo</th> 
 				  		 <th width="10%" align="center">Action</th>
 				  	</tr>	
 				  </thead> 
@@ -52,10 +52,42 @@
 				  			echo '<td>' . $result->PREFEREDSEX.'</td>';
 				  			echo '<td>' . $result->SECTOR_VACANCY.'</td>';
 				  			echo '<td>' . $result->JOBSTATUS.'</td>';
-							echo '<td>' . $result->JOBPHOTO.'</td>';
-				  		echo '<td align="center"><a title="Edit" href="index.php?view=edit&id='.$result->JOBID.'" class="btn btn-primary btn-xs  ">  <span class="fa fa-edit fw-fa"></a>
-				  		     <a title="Delete" href="controller.php?action=delete&id='.$result->JOBID.'" class="btn btn-danger btn-xs  ">  <span class="fa  fa-trash-o fw-fa "></a></td>';
-				  		// echo '<td></td>';
+				  		echo '<td align="center">
+              <a title="Edit" href="index.php?view=edit&id='.$result->JOBID.'" class="btn btn-primary btn-xs">
+                  <span class="fa fa-edit fw-fa"></span>
+              </a>
+              
+              <li class="dropdown user user-menu" style="list-style: none;">
+                  <a title="Delete" class="dropdown-toggle btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal">
+                      <span class="fa fa-trash-o fw-fa"></span>
+                  </a>
+              </li>
+          </td>';
+      
+      // Add the centered modal
+      echo '<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content text-center">
+                      <div class="modal-header">
+                          <h5 class="modal-title" id="deleteModalLabel">Delete Confirmation</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                          </button>
+                      </div>
+                      <div class="modal-body">
+                          <p>Are you sure you want to delete?</p>
+                      </div>
+                      <div class="modal-footer">
+                          <a title="Delete" href="controller.php?action=delete&id='.$result->JOBID.'" class="btn btn-danger">Yes</a>
+                          <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                      </div>
+                  </div>
+              </div>
+          </div>';
+      
+      
+      
+      
 				  		echo '</tr>';
 				  	} 
 				  	?>
@@ -72,5 +104,48 @@
 			
 			
 				</form>
-	
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button class="close" data-dismiss="modal" type=
+                  "button">×</button>
+
+                  <h4 class="modal-title" id="myModalLabel">Choose Image.</h4>
+                </div>
+
+                <form action="controller.php?action=photos" enctype="multipart/form-data" method="post">
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <div class="rows">
+                        <div class="col-md-12">
+                          <div class="rows">
+                            <div class="col-md-8">
+                            <input class="mealid" type="hidden" name="mealid" id="mealid" value="">
+                              <input name="MAX_FILE_SIZE" type=
+                              "hidden" value="1000000"> <input id=
+                              "photo" name="photo" type=
+                              "file">
+                            </div>
+
+                            <div class="col-md-4"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal">Close</button> <button class="btn btn-primary"
+                    name="savephoto" type="submit">Upload Photo</button>
+                  </div>
+                </form>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+
+        
+	 
  <div class="table-responsive">	 

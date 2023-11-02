@@ -163,7 +163,7 @@ if (isset($_SESSION['APPLICANTID'])) {
                             <label class="col-md-2" for="picture" style="padding: 0;margin: 0;">Attachtment File:</label> 
                             <div class="col-md-10" style="padding: 0;margin: 0;">
                                 <input id="picture" name="picture" type="file">
-                                <input name="MAX_FILE_SIZE" type="hidden" value="1000000"> 
+                                <input name="MAX_FILE_SIZE" type="hidden" value="2500000"> 
                             </div> 
                         </div>
                     </div> 
