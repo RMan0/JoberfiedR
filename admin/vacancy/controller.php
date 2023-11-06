@@ -93,6 +93,25 @@ switch ($action) {
 				message("Job Vacancy has been updated!", "success");
 				redirect("index.php");
 			}
+			$target_dir = "photos/";
+			$target_file = $target_dir . date("dmYhis") . basename($_FILES["JOBPHOTO"]["name"]);
+			$uploadOk = 1;
+			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+			
+			
+			if($imageFileType != "jpg" || $imageFileType != "png" || $imageFileType != "jpeg"
+		|| $imageFileType != "gif" ) {
+				if (move_uploaded_file($_FILES["JOBPHOTO"]["tmp_name"], $target_file)) {
+					return  date("dmYhis") . basename($_FILES["JOBPHOTO"]["name"]);
+				}else{
+					echo "Error Uploading File";
+					exit;
+				}
+			}else{
+					echo "File Not Supported";
+					exit;
+				}
+
 		}
 
 	}
@@ -148,44 +167,64 @@ switch ($action) {
 				exit;
 			}
 } 
+
 function doupdateimage(){
- 
-	$errofile = $_FILES['photo']['error'];
-	$type = $_FILES['photo']['type'];
-	$temp = $_FILES['photo']['tmp_name'];
-	$myfile =$_FILES['photo']['name'];
-	@$myfile = UploadImage();
-	 $location="photos/".$myfile;
+	$target_dir = "photos/";
+		$target_file = $target_dir . date("dmYhis") . basename($_FILES["JOBPHOTO"]["name"]);
+		$uploadOk = 1;
+		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+		
+		
+		if($imageFileType != "jpg" || $imageFileType != "png" || $imageFileType != "jpeg"
+	|| $imageFileType != "gif" ) {
+			 if (move_uploaded_file($_FILES["JOBPHOTO"]["tmp_name"], $target_file)) {
+				return  date("dmYhis") . basename($_FILES["JOBPHOTO"]["name"]);
+			}else{
+				echo "Error Uploading File";
+				exit;
+			}
+		}else{
+				echo "File Not Supported";
+				exit;
+			}
+	
+// 	$errofile = $_FILES['photo']['error'];
+// 	$type = $_FILES['photo']['type'];
+// 	$temp = $_FILES['photo']['tmp_name'];
+// 	$myfile =$_FILES['photo']['name'];
+// 	$location="./photos/".$myfile;
 
 
-if ( $errofile > 0) {
-		message("No image selected. The Image Quality is Too High!", "error");
-		redirect("index.php?view=view&id=". $_GET['id']);
-}else{
+// if ( $errofile > 0) {
+// 		message("No image selected. The Image Quality is Too High!", "error");
+// 		redirect("index.php?view=edit&id=". $_GET['id']);
+// }else{
 
-		@$file=$_FILES['photo']['tmp_name'];
-		@$image= addslashes(file_get_contents($_FILES['photo']['tmp_name']));
-		@$image_name= addslashes($_FILES['photo']['name']); 
-		@$image_size= getimagesize($_FILES['photo']['tmp_name']);
+// 		@$file=$_FILES['photo']['tmp_name'];
+// 		@$image= addslashes(file_get_contents($_FILES['photo']['tmp_name']));
+// 		@$image_name= addslashes($_FILES['photo']['name']); 
+// 		@$image_size= getimagesize($_FILES['photo']['tmp_name']);
 
-	if ($image_size==FALSE ) {
-		message("Uploaded file is not an image!", "error");
-		redirect("index.php?view=view&id=". $_GET['id']);
-	}else{
-			//uploading the file
-			move_uploaded_file($temp,"photos/" . $myfile);
+// 	if ($image_size==FALSE ) {
+// 		message("Uploaded file is not an image!", "error");
+// 		redirect("index.php?view=edit&id=". $_GET['id']);
+// 	}else{
+// 			//uploading the file
+// 			move_uploaded_file($temp,"photos/" . $myfile);
 	 
 			 
 
-				$user = New User();
-				$user->PICLOCATION 			= $location;
-				$user->update($_SESSION['ADMIN_USERID']);
-				redirect("index.php?view=view");
+// 				$user = New Jobs();
+// 				$user->JOBPHOTO 			= $location;
+// 				$user->update($_SESSION['JOBID']);
+// 				redirect("index.php?view=edit");
 				 
 					
-			}
-	}
+// 			}
+// 	}
 	 
 }
+
+
 
 ?>

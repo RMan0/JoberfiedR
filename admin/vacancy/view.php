@@ -5,11 +5,39 @@
     if($JOBID==''){
   redirect("index.php");
 }
-  $user = New Jobs();
+  $job = New Jobs();
   $singlejob = $job->single_job($JOBID);
 
  
   ?>
+  <?php
+    if (!isset($_SESSION['ADMIN_USERID'])){
+      redirect(web_root."admin/index.php");
+     }
+
+
+  $JOBID = $_GET['id'];
+  $job = New Jobs();
+  $res = $job->single_job($JOBID);
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $uploadDir = 'vacancy/'; // Specify the folder where you want to upload photos.
+    $uploadFile = $uploadDir . basename($_FILES['JOBPHOTO']['name']);
+
+    if (move_uploaded_file($_FILES['JOBPHOTO']['tmp_name'], $uploadFile)) {
+        // File was successfully uploaded to the specified directory
+        echo 'File was successfully uploaded.';
+    } else {
+        // File upload failed
+        echo 'File upload failed.';
+    }
+}
+?>
+
+
+
+
 <div class="container">
 <div class="panel-body inf-content">
     <div class="row">

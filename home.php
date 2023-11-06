@@ -91,9 +91,10 @@
                                        margin-top: 30px;
                                        padding-bottom: 30px;">
                     <div  id="image-container">
-                      <img title="job photo"  data-target="#myModal"  data-toggle="modal"  src="<?php echo web_root.'admin/vacancy/'.$job->JOBPHOTO; ?>">  
+                    <img  <?php echo web_root.'admin/vacancy/'. $job->JOBPHOTO;?>>
+                      
                     </div>
-                    <p><?php echo $job->JOBPHOTO;?></p>
+                    
                     <h3><?php echo $job->CATEGORY;?></h3>
                     <p><?php echo $job->OCCUPATIONTITLE;?></p>
                     <p>Salary :<?php echo $job->SALARIES;?></p>
