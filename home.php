@@ -90,9 +90,24 @@
                                        border-radius: 10px;
                                        margin-top: 30px;
                                        padding-bottom: 30px;">
-                    <div card>  
-                    <img src="<?php echo web_root.'admin/vacancy/'. $job->JOBPHOTO; ?>" alt="Job Photo">
-                    </div>
+         
+
+         <style>
+  .image-container {
+    text-align: center;
+    
+  }
+
+  .jobphoto {
+    display: inline-block;
+    width: 100%;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+<div class="image-container">
+  <img class="jobphoto" src="<?php echo web_root.'admin/vacancy/'. $job->JOBPHOTO; ?>" alt="Job Photo">
+</div>
                     <h3><?php echo $job->CATEGORY;?></h3>
                     <p><?php echo $job->OCCUPATIONTITLE;?></p>
                     <p>Salary :<?php echo $job->SALARIES;?></p>
