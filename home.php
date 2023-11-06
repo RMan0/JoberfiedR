@@ -90,11 +90,9 @@
                                        border-radius: 10px;
                                        margin-top: 30px;
                                        padding-bottom: 30px;">
-                    <div  id="image-container">
-                    <img  <?php echo web_root.'admin/vacancy/'. $job->JOBPHOTO;?>>
-                      
+                    <div card>  
+                    <img src="<?php echo web_root.'admin/vacancy/'. $job->JOBPHOTO; ?>" alt="Job Photo">
                     </div>
-                    
                     <h3><?php echo $job->CATEGORY;?></h3>
                     <p><?php echo $job->OCCUPATIONTITLE;?></p>
                     <p>Salary :<?php echo $job->SALARIES;?></p>

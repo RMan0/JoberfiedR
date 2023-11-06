@@ -4,7 +4,24 @@
       redirect(web_root."admin/index.php");
      }
 
-?>
+     $JOBID = $_GET['id'];
+     $job = new Jobs();
+     $res = $job->single_job($JOBID);
+     
+     
+     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+       $uploadDir = 'vacancy/'; // Specify the folder where you want to upload photos.
+       $uploadFile = $uploadDir . basename($_FILES['JOBPHOTO']['name']);
+     
+       if (move_uploaded_file($_FILES['JOBPHOTO']['tmp_name'], $uploadFile)) {
+         // File was successfully uploaded to the specified directory
+         echo 'File was successfully uploaded.';
+       } else {
+         // File upload failed
+         echo 'File upload failed.';
+       }
+     }
+     ?>
  <form class="form-horizontal span6" action="controller.php?action=add" method="POST">
 
                 <div class="row">
@@ -13,7 +30,31 @@
                     </div>
                     <!-- /.col-lg-12 -->
                  </div> 
+                 <form class="form-horizontal span6" action="controller.php?action=edit" method="POST" enctype="multipart/form-data">
 
+<div class="row">
+
+</div>
+<div class="col-sm-12">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-header">
+        <div
+          style="border-bottom: 1px solid #ddd;padding: 10px;font-size: 25px;font-weight: bold;color: #000;margin-bottom: 5px;">
+          Upload Photo
+        </div>
+      </div>
+      <div class="panel-body">
+        <label class="col-md-2" for="picture" style="padding: 0;margin: 0;">Upload Photo:</label>
+
+        <div class="col-md-10" style="padding: 0;margin: 0;">
+          <input id="JOBPHOTO" name="JOBPHOTO" autocomplete="none" type="file" />
+          <!-- <input name="MAX_FILE_SIZE" type="file" value="2500000">  -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
                  <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=

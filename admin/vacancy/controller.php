@@ -67,54 +67,72 @@ switch ($action) {
 	function doEdit(){
 		global $mydb;
 		if(isset($_POST['save'])){
-			if ( $_POST['COMPANYID'] == "None") {
+			if ($_POST['COMPANYID'] == "None") {
 				$messageStats = false;
-				message("All field is required!","error");
+				message("All fields are required!", "error");
 				redirect('index.php?view=add');
-			}else{	
-				$sql = "SELECT * FROM tblcategory where CATEGORYID = {$_POST['CATEGORY']}";
+			} else {
+				$sql = "SELECT * FROM tblcategory WHERE CATEGORYID = {$_POST['CATEGORY']}";
 				$mydb->setQuery($sql);
 				$cat = $mydb->loadSingleResult();
-				$_POST['CATEGORY']=$cat->CATEGORY;
-				$job = New Jobs();
-				$job->COMPANYID							= $_POST['COMPANYID']; 
-				$job->CATEGORY							= $_POST['CATEGORY']; 
-				$job->OCCUPATIONTITLE					= $_POST['OCCUPATIONTITLE'];
-				$job->REQ_NO_EMPLOYEES					= $_POST['REQ_NO_EMPLOYEES'];
-				$job->SALARIES							= $_POST['SALARIES'];
-				$job->DURATION_EMPLOYEMENT				= $_POST['DURATION_EMPLOYEMENT'];
-				$job->QUALIFICATION_WORKEXPERIENCE		= $_POST['QUALIFICATION_WORKEXPERIENCE'];
-				$job->JOBDESCRIPTION					= $_POST['JOBDESCRIPTION'];
-				$job->PREFEREDSEX						= $_POST['PREFEREDSEX'];
-				$job->SECTOR_VACANCY					= $_POST['SECTOR_VACANCY'];
-				$job->JOBPHOTO					        = $_POST['JOBPHOTO']; 
+				$_POST['CATEGORY'] = $cat->CATEGORY;
+				$job = new Jobs();
+				$job->COMPANYID = $_POST['COMPANYID'];
+				$job->CATEGORY = $_POST['CATEGORY'];
+				$job->OCCUPATIONTITLE = $_POST['OCCUPATIONTITLE'];
+				$job->REQ_NO_EMPLOYEES = $_POST['REQ_NO_EMPLOYEES'];
+				$job->SALARIES = $_POST['SALARIES'];
+				$job->DURATION_EMPLOYEMENT = $_POST['DURATION_EMPLOYEMENT'];
+				$job->QUALIFICATION_WORKEXPERIENCE = $_POST['QUALIFICATION_WORKEXPERIENCE'];
+				$job->JOBDESCRIPTION = $_POST['JOBDESCRIPTION'];
+				$job->PREFEREDSEX = $_POST['PREFEREDSEX'];
+				$job->SECTOR_VACANCY = $_POST['SECTOR_VACANCY'];
+	
+				// Handle image update
+				if (!empty($_FILES["JOBPHOTO"]["name"])) {
+					// Upload and get the new image path
+					$target_dir = "photos/";
+					$target_file = $target_dir . date("dmYhis") . basename($_FILES["JOBPHOTO"]["name"]);
+					$uploadOk = 1;
+					$imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+	
+					// Check if the file is an actual image
+					$check = getimagesize($_FILES["JOBPHOTO"]["tmp_name"]);
+					if ($check === false) {
+						echo "File is not an image.";
+						$uploadOk = 0;
+					}
+	
+					if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+						echo "File Not Supported";
+						$uploadOk = 0;
+					}
+	
+					if ($uploadOk == 0) {
+						echo "Error Uploading File";
+					} else {
+						if (move_uploaded_file($_FILES["JOBPHOTO"]["tmp_name"], $target_file)) {
+							// Successfully uploaded image, update the database with the new image path
+							$job->JOBPHOTO = $target_file;
+						} else {
+							echo "Error Uploading File";
+							exit;
+						}
+					}
+				} else {
+					// No new image uploaded, keep the existing image path
+					$job->JOBPHOTO = $_POST['JOBPHOTO'];
+				}
+	
+				// Update the job vacancy in the database
 				$job->update($_POST['JOBID']);
-
+	
 				message("Job Vacancy has been updated!", "success");
 				redirect("index.php");
 			}
-			$target_dir = "photos/";
-			$target_file = $target_dir . date("dmYhis") . basename($_FILES["JOBPHOTO"]["name"]);
-			$uploadOk = 1;
-			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-			
-			
-			if($imageFileType != "jpg" || $imageFileType != "png" || $imageFileType != "jpeg"
-		|| $imageFileType != "gif" ) {
-				if (move_uploaded_file($_FILES["JOBPHOTO"]["tmp_name"], $target_file)) {
-					return  date("dmYhis") . basename($_FILES["JOBPHOTO"]["name"]);
-				}else{
-					echo "Error Uploading File";
-					exit;
-				}
-			}else{
-					echo "File Not Supported";
-					exit;
-				}
-
 		}
-
 	}
+	
 
 
 	function doDelete(){
@@ -170,15 +188,15 @@ switch ($action) {
 
 function doupdateimage(){
 	$target_dir = "photos/";
-		$target_file = $target_dir . date("dmYhis") . basename($_FILES["JOBPHOTO"]["name"]);
+		$target_file = $target_dir . date("dmYhis") . basename($_FILES["photo"]["name"]);
 		$uploadOk = 1;
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 		
 		
 		if($imageFileType != "jpg" || $imageFileType != "png" || $imageFileType != "jpeg"
 	|| $imageFileType != "gif" ) {
-			 if (move_uploaded_file($_FILES["JOBPHOTO"]["tmp_name"], $target_file)) {
-				return  date("dmYhis") . basename($_FILES["JOBPHOTO"]["name"]);
+			 if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
+				return  date("dmYhis") . basename($_FILES["photo"]["name"]);
 			}else{
 				echo "Error Uploading File";
 				exit;
