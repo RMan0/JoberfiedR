@@ -354,7 +354,7 @@ header ul.nav li ul li ul {
   border-bottom-color: none;
   content:none;
 }
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {color: #00ff00;background: none;border-radius: 0;}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {color: #38761d;background: none;border-radius: 0;}
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
   color: #00ff00;
   background-color: transparent;
@@ -997,7 +997,7 @@ blockquote cite a:visited 				{ color:#555; }
 }
 
 /* --- button --- */
-.btn{text-align: center;color: #ffffff;padding: 12px 25px;border-radius: 0;background: #00b800 ;border-color: #00b800;}
+.btn{text-align: center;color: #ffffff;border-radius: 0;background: #00b800 ;border-color: #00b800;}
 .btn-theme {
 	color: #fff;
 	background: transparent;

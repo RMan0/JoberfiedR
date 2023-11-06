@@ -18,7 +18,7 @@
 		<div class="col-md-8">
 		  <input name="JOBID" type="hidden" value="<?php echo $_GET['job'];?>">
 		   <input class="form-control input-sm" id="FNAME" name="FNAME" placeholder=
-		      "Firstname" type="text" value=""  onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
+		      "Firstname" type="text" value="" required onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
 		</div>
 	</div>
 </div>
@@ -31,7 +31,7 @@
 		<div class="col-md-8">
 		  <input name="deptid" type="hidden" value="">
 		  <input  class="form-control input-sm" id="LNAME" name="LNAME" placeholder=
-		      "Lastname"    onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
+		      "Lastname"  required  onkeyup="javascript:capitalize(this.id, this.value);" autocomplete="off">
 		  </div>
 	</div>
 </div>

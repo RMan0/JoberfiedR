@@ -29,7 +29,7 @@
 								<div class="col-sm-12 search1">
 									<label class="col-sm-3">SEARCH:</label>
 									<div class="col-sm-9">
-										<input class="form-control" type="" name="SEARCH" placeholder="Search For">
+										<input class="form-control" type="" name="SEARCH" placeholder="Search For" required>
 									</div>
 								</div>
 							</div>  

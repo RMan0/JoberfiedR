@@ -27,7 +27,7 @@
 				  		<th>Job Description</th> 
 				  		<th>Prefered Sex</th> 
 				  		<th>Sector of Vacancy</th> 
-				  		<th>Job Status</th> 
+				  		<th>Job Photo</th> 
 				  		 <th width="10%" align="center">Action</th>
 				  	</tr>	
 				  </thead> 
@@ -51,43 +51,35 @@
 				  			echo '<td>' . $result->JOBDESCRIPTION.'</td>';
 				  			echo '<td>' . $result->PREFEREDSEX.'</td>';
 				  			echo '<td>' . $result->SECTOR_VACANCY.'</td>';
-				  			echo '<td>' . $result->JOBSTATUS.'</td>';
-				  		echo '<td align="center">
-              <a title="Edit" href="index.php?view=edit&id='.$result->JOBID.'" class="btn btn-primary btn-xs">
-                  <span class="fa fa-edit fw-fa"></span>
+				  			echo '<td>' . $result->JOBPHOTO.'</td>';
+				  		  echo '<td align="center">
+              <a title="Edit" href="index.php?view=edit&id='.$result->JOBID.'"  class="btn btn-info btn-xs  ">
+                       <span class="fa fa-edit fw-fa"></span> Edit</a> 
+             
+              <a title="Delete" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal">
+                <span class="fa fa-trash-o fw-fa"> Remove</span>
               </a>
-              
-              <li class="dropdown user user-menu" style="list-style: none;">
-                  <a title="Delete" class="dropdown-toggle btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal">
-                      <span class="fa fa-trash-o fw-fa"></span>
-                  </a>
-              </li>
-          </td>';
-      
-      // Add the centered modal
-      echo '<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            </td>';
+          // Add the centered modal
+          echo '<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content text-center">
-                      <div class="modal-header">
-                          <h5 class="modal-title" id="deleteModalLabel">Delete Confirmation</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                          </button>
-                      </div>
-                      <div class="modal-body">
-                          <p>Are you sure you want to delete?</p>
-                      </div>
-                      <div class="modal-footer">
-                          <a title="Delete" href="controller.php?action=delete&id='.$result->JOBID.'" class="btn btn-danger">Yes</a>
-                          <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-                      </div>
+                <div class="modal-content text-center">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </div>
+                  <div class="modal-body">
+                    <p>Are you sure you want to delete?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <a title="Delete" href="controller.php?action=delete&id='.$result->JOBID.'" class="btn btn-danger ">Yes</a>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                  </div>
+                </div>
               </div>
-          </div>';
-      
-      
-      
-      
+            </div>'; 
 				  		echo '</tr>';
 				  	} 
 				  	?>

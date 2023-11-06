@@ -9,6 +9,31 @@
   $res = $job->single_job($jobid);
 
 ?> 
+
+
+<?php
+if (!isset($_SESSION['ADMIN_USERID'])) {
+    redirect(web_root . "admin/index.php");
+}
+
+$jobid = $_GET['id'];
+$job = new Jobs();
+$res = $job->single_job($jobid);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $uploadDir = 'vacancy/'; // Specify the folder where you want to upload photos.
+    $uploadFile = $uploadDir . basename($_FILES['JOBPHOTO']['name']);
+
+    if (move_uploaded_file($_FILES['JOBPHOTO']['tmp_name'], $uploadFile)) {
+        // File was successfully uploaded to the specified directory
+        echo 'File was successfully uploaded.';
+    } else {
+        // File upload failed
+        echo 'File upload failed.';
+    }
+}
+?>
+
 <form class="form-horizontal span6" action="controller.php?action=edit" method="POST">
 
   <div class="row">
@@ -26,14 +51,16 @@
                         </div>
                         <div class="panel-body"> 
                             <label class="col-md-2" for="picture" style="padding: 0;margin: 0;">Upload Photo:</label> 
+                          
                             <div class="col-md-10" style="padding: 0;margin: 0;">
-                                <input id="photo" name="photo" type="file">
+                            <input id="JOBPHOTO" name="JOBPHOTO"  autocomplete="none" value="<?php echo $res->JOBPHOTO ?>" type="file"/>                
                                 <input name="MAX_FILE_SIZE" type="hidden" value="2500000"> 
                             </div> 
                         </div>
                     </div> 
                 </div> 
             </div>
+            
                  <div class="form-group">
                     <div class="col-md-8">
                       <label class="col-md-4 control-label" for=
@@ -177,19 +204,7 @@
                       </div>
                     </div>
                   </div>  
-                  <div class="form-group">
-                    <div class="col-md-8">
-                      <label class="col-md-4 control-label" for=
-                      "JOBSTATUS">Job Status:</label> 
-                      <div class="col-md-8">
-                          <select class="form-control input-sm" id="JOBSTATUS" name="JOBSTATUS">
-                          <option value="None">Select</option>
-                           <option <?php echo ($res->JOBSTATUS=='Available') ? "SELECTED" :"" ?>>Available</option>
-                           <option <?php echo ($res->JOBSTATUS=='Not Available') ? "SELECTED" :"" ?>>Not Available</option>           
-                        </select>
-                      </div>
-                    </div>
-                  </div> 
+                 
  
                   <div class="form-group">
                     <div class="col-md-8">

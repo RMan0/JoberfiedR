@@ -84,10 +84,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left" style="margin-left: 10px;">
-                <a href="<?php echo ($view=='logout') ? 'active': '';?>"><a href="<?php echo web_root.'logout.php'; ?>"><i class="btn btn-default btn-flat">Yes</a></i>
+                <a href="<?php echo ($view=='logout') ? 'active': '';?>"><a href="<?php echo web_root.'logout.php'; ?>"><i class="btn btn-default btn-flat" style="width: 60px; height: 40px;">Yes</a></i>
                 </div>
                 <div class="pull-right" style="margin-right: 10px;">
-                <a href="index.php" ><i class="btn btn-default btn-flat">No</a></i>
+                <a href="index.php" ><i class="btn btn-default btn-flat" style="width: 60px; height: 40px;">No</a></i>
                 
                 </div>
               </li>

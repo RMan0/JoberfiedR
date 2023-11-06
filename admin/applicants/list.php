@@ -40,13 +40,40 @@
 							  		echo '<td>' . $result->OCCUPATIONTITLE.'</a></td>';
 							  		echo '<td>' . $result->COMPANYNAME.'</a></td>'; 
 							  		echo '<td>'. $result->REGISTRATIONDATE.'</td>';
-							  		echo '<td>'. $result->REMARKS.'</td>';  
-					  				echo '<td align="center" >    
-					  		             <a title="View" href="index.php?view=view&id='.$result->REGISTRATIONID.'"  class="btn btn-info btn-xs  ">
+							  		echo '<td>'. $result->REMARKS.'</td>';
+									  echo '<td align="center">
+									  <a title="View" href="index.php?view=view&id='.$result->REGISTRATIONID.'"  class="btn btn-info btn-xs  ">
 					  		             <span class="fa fa-info fw-fa"></span> View</a> 
-					  		             <a title="Remove" href="index.php?view=delete&id='.$result->REGISTRATIONID.'"  class="btn btn-danger btn-xs  ">
-					  		             <span class="fa fa-trash-o fw-fa"></span> Remove</a> 
-					  					 </td>';
+									 
+									  <a title="Delete" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal">
+										  <span class="fa fa-trash-o fw-fa"> Remove</span>
+									  </a>
+								  
+								  </td>';
+							  // Add the centered modal
+							  echo '<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+									  <div class="modal-dialog modal-dialog-centered" role="document">
+										  <div class="modal-content text-center">
+											  <div class="modal-header">
+												  <h5 class="modal-title" id="deleteModalLabel">Delete Confirmation</h5>
+												  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													  <span aria-hidden="true">&times;</span>
+												  </button>
+											  </div>
+											  <div class="modal-body">
+												  <p>Are you sure you want to delete?</p>
+											  </div>
+											  <div class="modal-footer">
+											  <a title="Remove" href="index.php?view=delete&id='.$result->REGISTRATIONID.'"  class="btn btn-danger   "></span> Yes</a> 
+											  
+											  <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+											</div>
+										  </div>
+										</div>
+									  </div>';
+								    
+								 
+					  				
 							  		echo '</tr>';
 							  	} 
 							  	?>

@@ -176,7 +176,7 @@
         </a>
 
         <ul class="dropdown-menu" style="float: right; margin-top: 10px; border-style: solid; border-width: 0.5px; border-color: white;">
-            <li class="user-header" style="background-color: #00b800;">
+            <li class="user-header" style="background-color: #38761d;">
                 <?php
                 if (!empty($appl->APPLICANTPHOTO)) {
                     echo '<img data-target="#menuModal" data-toggle="modal" src="' . web_root . 'applicant/' . $appl->APPLICANTPHOTO . '" style="height: 80px; width: 80px; border-radius: 50%; display: block; margin-left: auto; margin-right: auto;" alt="User Image" />';
